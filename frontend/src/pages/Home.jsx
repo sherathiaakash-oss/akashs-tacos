@@ -78,7 +78,7 @@ export default function Home() {
   }, [promotions.length]);
   // Fetch the dynamic aggregated collection feed natively from our server on mount
   useEffect(() => {
-    fetch('http://localhost:5000/api/menu')
+    fetch('//api/menu')
       .then(res => res.json())
       .then(data => {
         setProductCatalogue(data);

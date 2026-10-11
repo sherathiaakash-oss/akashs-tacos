@@ -1,5 +1,5 @@
 // frontend/src/utils/cart.js — small helpers shared by Menu, Cart and Orders pages
-export const API = 'http://localhost:5000/api';
+export const API = '//api';
 export const ANON_ID = 'Guest_Workspace_Session';
 
 export const getCartUserId = () => localStorage.getItem('activeUser_id') || ANON_ID;
