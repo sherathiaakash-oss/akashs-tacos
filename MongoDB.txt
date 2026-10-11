@@ -1,0 +1,9 @@
+sherathiaakash_db_user
+
+s2fZjd1L5y9LHKSI
+
+
+mongodb+srv://sherathiaakash_db_user:<db_password>@cluster0.kx61aep.mongodb.net/?appName=Cluster0
+
+
+mongodb://sherathiaakash_db_user:s2fZjd1L5y9LHKSI@ac-ppngvq8-shard-00-00.kx61aep.mongodb.net:27017,ac-ppngvq8-shard-00-01.kx61aep.mongodb.net:27017,ac-ppngvq8-shard-00-02.kx61aep.mongodb.net:27017/?ssl=true&replicaSet=atlas-e9n4gr-shard-0&authSource=admin&appName=Cluster0

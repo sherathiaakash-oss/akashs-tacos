@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+/* 1. Skew each individual link ribbon box down independently */
+.skew-cross-box {
+  transform: skewY(-9deg);
+}
+
+/* 2. Unskew the text layout inside so the characters stay perfectly vertical */
+.unskew-cross-content {
+  transform: skewY(9deg);
+}
+
+/* 3. Global modern utility to hide default browser scrollbar tracks completely */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+[popover]:popover-open {
+  display: flex !important;
+  flex-direction: column !important;
+}
