@@ -23,17 +23,17 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(express.json());
-app.use(cors({ origin: 'https://akashs-tacos.onrender.com', credentials: true }));
+app.use(cors({ origin: '/api/', credentials: true }));
 
 
 // 1. API Route Handlers
-app.use('https://akashs-tacos.onrender.comauth', authRoutes);
-app.use('https://akashs-tacos.onrender.commenu', menuRoutes);
-app.use('https://akashs-tacos.onrender.comuser', userRoutes);
-app.use('https://akashs-tacos.onrender.comadmin', adminRoutes);
-app.use('https://akashs-tacos.onrender.comcart', cartRoutes);
-app.use('https://akashs-tacos.onrender.comorders', orderRoutes);
-app.use('https://akashs-tacos.onrender.comdeals', dealRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/menu', menuRoutes);
+app.use('/api/user', userRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/cart', cartRoutes);
+app.use('/api/orders', orderRoutes);
+app.use('/api/deals', dealRoutes);
 
 // 2. Serve Frontend Static Production Assets
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
