@@ -38,7 +38,7 @@ app.use('/api/deals', dealRoutes);
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
 // 3. Fallback Route: Pass web traffic routing requests to React Router
-app.get('/:any*', (req, res) => {
+app.get('/:any', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
 
