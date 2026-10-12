@@ -1,4 +1,4 @@
-import { API_BASE_URL } from '../main.jsx';
+import { API_BASE_URL } from './main.jsx';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
