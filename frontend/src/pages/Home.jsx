@@ -79,7 +79,7 @@ export default function Home() {
   }, [promotions.length]);
   // Fetch the dynamic aggregated collection feed natively from our server on mount
   useEffect(() => {
-    fetch('\${API_BASE_URL}/api/menu')
+    fetch('\https://akashs-tacos-backend.onrender.com/api/menu')
       .then(res => res.json())
       .then(data => {
         setProductCatalogue(data);

@@ -41,7 +41,7 @@ export default function UserDashboard() {
   // PROFILE HYDRATION ENGINE: Aggressively streams real document fields from your Mongo User Table
   useEffect(() => {
     setLoading(true);
-    fetch(`\${API_BASE_URL}/api/user/profile/${activeUser_id}`)
+    fetch(`\https://akashs-tacos-backend.onrender.com/api/user/profile/${activeUser_id}`)
       .then(res => res.json())
       .then(data => {
         if (data && !data.message) {
@@ -73,7 +73,7 @@ export default function UserDashboard() {
     setShowAddForm(false);
 
     const routeKey = endpointMap[adminActiveTable] || "menuitems";
-    fetch(`\${API_BASE_URL}/api/admin/${routeKey}`)
+    fetch(`\https://akashs-tacos-backend.onrender.com/api/admin/${routeKey}`)
       .then(res => res.json())
       .then(data => {
         setTableRowsData(Array.isArray(data) ? data : []);
@@ -88,7 +88,7 @@ export default function UserDashboard() {
   useEffect(() => { fetchTableRowsData(); }, [adminActiveTable, profileData.is_admin]);
 
   const handleSecureLogout = async () => {
-    try { await fetch(`\${API_BASE_URL}/api/auth/logout/${activeUser_id}`, { method: 'POST' }); } catch(e){}
+    try { await fetch(`\https://akashs-tacos-backend.onrender.com/api/auth/logout/${activeUser_id}`, { method: 'POST' }); } catch(e){}
     localStorage.clear(); navigate('/auth'); window.location.reload();
   };
 
@@ -97,7 +97,7 @@ export default function UserDashboard() {
     if (!window.confirm(`⚠️ Permanently delete document row ${rowId} inside table ${adminActiveTable}?`)) return;
 
     try {
-      const res = await fetch(`\${API_BASE_URL}/api/admin/${routeKey}/${rowId}`, { method: 'DELETE' });
+      const res = await fetch(`\https://akashs-tacos-backend.onrender.com/api/admin/${routeKey}/${rowId}`, { method: 'DELETE' });
       if (res.ok) setTableRowsData(prev => prev.filter(r => (r._id || r.id) !== rowId));
     } catch (err) { console.error(err); }
   };
@@ -109,7 +109,7 @@ export default function UserDashboard() {
   const handleSaveInlineEdit = async (rowId) => {
     const routeKey = endpointMap[adminActiveTable];
     try {
-      const res = await fetch(`\${API_BASE_URL}/api/admin/${routeKey}/${rowId}`, {
+      const res = await fetch(`\https://akashs-tacos-backend.onrender.com/api/admin/${routeKey}/${rowId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(editFormData)
@@ -125,7 +125,7 @@ export default function UserDashboard() {
     e.preventDefault();
     const routeKey = endpointMap[adminActiveTable];
     try {
-      const res = await fetch(`\${API_BASE_URL}/api/admin/${routeKey}/add`, {
+      const res = await fetch(`\https://akashs-tacos-backend.onrender.com/api/admin/${routeKey}/add`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newRowFormData)
@@ -140,7 +140,7 @@ export default function UserDashboard() {
 
   const handleUpdateProfile = (e) => {
     e.preventDefault();
-    fetch(`\${API_BASE_URL}/api/user/profile/${activeUser_id}`, {
+    fetch(`\https://akashs-tacos-backend.onrender.com/api/user/profile/${activeUser_id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(profileData)

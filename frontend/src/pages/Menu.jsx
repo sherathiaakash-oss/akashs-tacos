@@ -101,7 +101,7 @@ export default function Menu() {
 
   const refreshCartQuantitiesFromDatabase = () => {
     const key = localStorage.getItem('activeUser_id') || "Guest_Workspace_Session";
-    fetch(`\${API_BASE_URL}/api/cart/${key}`)
+    fetch(`\https://akashs-tacos-backend.onrender.com/api/cart/${key}`)
       .then(res => res.json())
       .then(cartData => {
         if (cartData && Array.isArray(cartData.items)) {
@@ -117,7 +117,7 @@ export default function Menu() {
       });
   };
   useEffect(() => {
-    fetch('\${API_BASE_URL}/api/menu')
+    fetch('\https://akashs-tacos-backend.onrender.com/api/menu')
       .then(res => res.json())
       .then(data => {
         setProductCatalogue(data);
@@ -130,7 +130,7 @@ export default function Menu() {
 
     // 🧺 Load every pantry table the popup needs (this was missing, so the popup lists were empty)
     const getTable = (table) =>
-      fetch(`\${API_BASE_URL}/api/admin/${table}`)
+      fetch(`\https://akashs-tacos-backend.onrender.com/api/admin/${table}`)
         .then(res => res.json())
         .then(rows => (Array.isArray(rows) ? rows : []))
         .catch(() => []);

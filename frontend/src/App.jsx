@@ -38,7 +38,7 @@ function CartLink() {
   useEffect(() => {
     const load = () => {
       const id = localStorage.getItem('activeUser_id') || 'Guest_Workspace_Session';
-      fetch(`\${API_BASE_URL}/api/cart/${id}`)
+      fetch(`\https://akashs-tacos-backend.onrender.com/api/cart/${id}`)
         .then((res) => res.json())
         .then((cart) => setCount((cart.items || []).reduce((sum, row) => sum + (row.qty || 0), 0)))
         .catch(() => {});
