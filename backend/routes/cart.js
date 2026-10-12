@@ -124,7 +124,7 @@ router.post('/add', async (req, res) => {
   }
 });
 
-// 3. PUT /api/cart/update-qty — +/- buttons on the cart page
+// 3. PUT /api/cart/updates-qty — +/- buttons on the cart page
 router.put('/update-qty', async (req, res) => {
   try {
     const { user_id, arrayIndex, delta } = req.body;
