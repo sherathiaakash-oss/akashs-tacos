@@ -53,13 +53,13 @@ export default function Auth() {
     let submissionPayload = {};
 
     if (activeMode === "MEMBER_SIGNIN") {
-      apiEndpointPath = "//api/auth/signin/member";
+      apiEndpointPath = "http://localhost:5000/api/auth/signin/member";
       submissionPayload = { User_id: formData.User_id, password: formData.password };
     } else if (activeMode === "GUEST_SIGNIN") {
-      apiEndpointPath = "//api/auth/signin/guest";
+      apiEndpointPath = "http://localhost:5000/api/auth/signin/guest";
       submissionPayload = { fullName: formData.fullName, phoneNo: formData.phoneNo, address: formData.address };
     } else if (activeMode === "REGISTER") {
-      apiEndpointPath = "//api/auth/register";
+      apiEndpointPath = "http://localhost:5000/api/auth/register";
       submissionPayload = formData;
     }
 

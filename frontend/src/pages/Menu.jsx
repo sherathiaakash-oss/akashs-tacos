@@ -100,7 +100,7 @@ export default function Menu() {
 
   const refreshCartQuantitiesFromDatabase = () => {
     const key = localStorage.getItem('activeUser_id') || "Guest_Workspace_Session";
-    fetch(`//api/cart/${key}`)
+    fetch(`http://localhost:5000/api/cart/${key}`)
       .then(res => res.json())
       .then(cartData => {
         if (cartData && Array.isArray(cartData.items)) {
@@ -116,7 +116,7 @@ export default function Menu() {
       });
   };
   useEffect(() => {
-    fetch('//api/menu')
+    fetch('http://localhost:5000/api/menu')
       .then(res => res.json())
       .then(data => {
         setProductCatalogue(data);
@@ -129,7 +129,7 @@ export default function Menu() {
 
     // 🧺 Load every pantry table the popup needs (this was missing, so the popup lists were empty)
     const getTable = (table) =>
-      fetch(`//api/admin/${table}`)
+      fetch(`http://localhost:5000/api/admin/${table}`)
         .then(res => res.json())
         .then(rows => (Array.isArray(rows) ? rows : []))
         .catch(() => []);

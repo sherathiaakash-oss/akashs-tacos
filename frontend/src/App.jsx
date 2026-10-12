@@ -37,7 +37,7 @@ function CartLink() {
   useEffect(() => {
     const load = () => {
       const id = localStorage.getItem('activeUser_id') || 'Guest_Workspace_Session';
-      fetch(`//api/cart/${id}`)
+      fetch(`http://localhost:5000/api/cart/${id}`)
         .then((res) => res.json())
         .then((cart) => setCount((cart.items || []).reduce((sum, row) => sum + (row.qty || 0), 0)))
         .catch(() => {});
