@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 import './index.css';
 // Dynamically set backend API URL based on development or production environment
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://akashs-tacos-backend.onrender.com';
 
 // 1. Locate the absolute DOM hook gateway container from index.html
 const rootElement = document.getElementById('root');

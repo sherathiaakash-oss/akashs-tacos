@@ -53,13 +53,13 @@ export default function Auth() {
     let submissionPayload = {};
 
     if (activeMode === "MEMBER_SIGNIN") {
-      apiEndpointPath = "http://localhost:5000/api/auth/signin/member";
+      apiEndpointPath = "https://akashs-tacos-backend.onrender.com/api/auth/signin/member";
       submissionPayload = { User_id: formData.User_id, password: formData.password };
     } else if (activeMode === "GUEST_SIGNIN") {
-      apiEndpointPath = "http://localhost:5000/api/auth/signin/guest";
+      apiEndpointPath = "https://akashs-tacos-backend.onrender.com/api/auth/signin/guest";
       submissionPayload = { fullName: formData.fullName, phoneNo: formData.phoneNo, address: formData.address };
     } else if (activeMode === "REGISTER") {
-      apiEndpointPath = "http://localhost:5000/api/auth/register";
+      apiEndpointPath = "https://akashs-tacos-backend.onrender.com/api/auth/register";
       submissionPayload = formData;
     }
 

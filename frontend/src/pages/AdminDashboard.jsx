@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const API = 'http://localhost:5000/api/admin';
+const API = 'https://akashs-tacos-backend.onrender.com/api/admin';
 
 // ---------- helpers: convert between database values and form values ----------
 const toFormValue = (field, value) => {
@@ -95,7 +95,7 @@ export default function AdminDashboard() {
   }, [activeUser_id]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/user/profile/${activeUser_id}`)
+    fetch(`https://akashs-tacos-backend.onrender.com/api/user/profile/${activeUser_id}`)
       .then((res) => res.json())
       .then((data) => { if (data && !data.message) setAdminProfile(data); })
       .catch(() => {})
