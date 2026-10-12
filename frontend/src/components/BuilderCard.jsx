@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../main.jsx';
 import React from 'react';
 import { CREATE_TACO_IMAGE, CREATE_MEAL_IMAGE } from '../utils/categoryImages';
 

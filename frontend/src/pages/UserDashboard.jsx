@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../main.jsx';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -40,7 +41,7 @@ export default function UserDashboard() {
   // PROFILE HYDRATION ENGINE: Aggressively streams real document fields from your Mongo User Table
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:5000/api/user/profile/${activeUser_id}`)
+    fetch(`\${API_BASE_URL}/api/user/profile/${activeUser_id}`)
       .then(res => res.json())
       .then(data => {
         if (data && !data.message) {
@@ -72,7 +73,7 @@ export default function UserDashboard() {
     setShowAddForm(false);
 
     const routeKey = endpointMap[adminActiveTable] || "menuitems";
-    fetch(`http://localhost:5000/api/admin/${routeKey}`)
+    fetch(`\${API_BASE_URL}/api/admin/${routeKey}`)
       .then(res => res.json())
       .then(data => {
         setTableRowsData(Array.isArray(data) ? data : []);
@@ -87,7 +88,7 @@ export default function UserDashboard() {
   useEffect(() => { fetchTableRowsData(); }, [adminActiveTable, profileData.is_admin]);
 
   const handleSecureLogout = async () => {
-    try { await fetch(`http://localhost:5000/api/auth/logout/${activeUser_id}`, { method: 'POST' }); } catch(e){}
+    try { await fetch(`\${API_BASE_URL}/api/auth/logout/${activeUser_id}`, { method: 'POST' }); } catch(e){}
     localStorage.clear(); navigate('/auth'); window.location.reload();
   };
 
@@ -96,7 +97,7 @@ export default function UserDashboard() {
     if (!window.confirm(`⚠️ Permanently delete document row ${rowId} inside table ${adminActiveTable}?`)) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/admin/${routeKey}/${rowId}`, { method: 'DELETE' });
+      const res = await fetch(`\${API_BASE_URL}/api/admin/${routeKey}/${rowId}`, { method: 'DELETE' });
       if (res.ok) setTableRowsData(prev => prev.filter(r => (r._id || r.id) !== rowId));
     } catch (err) { console.error(err); }
   };
@@ -108,7 +109,7 @@ export default function UserDashboard() {
   const handleSaveInlineEdit = async (rowId) => {
     const routeKey = endpointMap[adminActiveTable];
     try {
-      const res = await fetch(`http://localhost:5000/api/admin/${routeKey}/${rowId}`, {
+      const res = await fetch(`\${API_BASE_URL}/api/admin/${routeKey}/${rowId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(editFormData)
@@ -124,7 +125,7 @@ export default function UserDashboard() {
     e.preventDefault();
     const routeKey = endpointMap[adminActiveTable];
     try {
-      const res = await fetch(`http://localhost:5000/api/admin/${routeKey}/add`, {
+      const res = await fetch(`\${API_BASE_URL}/api/admin/${routeKey}/add`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newRowFormData)
@@ -139,7 +140,7 @@ export default function UserDashboard() {
 
   const handleUpdateProfile = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:5000/api/user/profile/${activeUser_id}`, {
+    fetch(`\${API_BASE_URL}/api/user/profile/${activeUser_id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(profileData)

@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../main.jsx';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
@@ -37,7 +38,7 @@ function CartLink() {
   useEffect(() => {
     const load = () => {
       const id = localStorage.getItem('activeUser_id') || 'Guest_Workspace_Session';
-      fetch(`http://localhost:5000/api/cart/${id}`)
+      fetch(`\${API_BASE_URL}/api/cart/${id}`)
         .then((res) => res.json())
         .then((cart) => setCount((cart.items || []).reduce((sum, row) => sum + (row.qty || 0), 0)))
         .catch(() => {});

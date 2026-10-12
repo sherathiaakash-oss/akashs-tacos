@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../main.jsx';
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Popover from '../components/Popover';
@@ -100,7 +101,7 @@ export default function Menu() {
 
   const refreshCartQuantitiesFromDatabase = () => {
     const key = localStorage.getItem('activeUser_id') || "Guest_Workspace_Session";
-    fetch(`http://localhost:5000/api/cart/${key}`)
+    fetch(`\${API_BASE_URL}/api/cart/${key}`)
       .then(res => res.json())
       .then(cartData => {
         if (cartData && Array.isArray(cartData.items)) {
@@ -116,7 +117,7 @@ export default function Menu() {
       });
   };
   useEffect(() => {
-    fetch('http://localhost:5000/api/menu')
+    fetch('\${API_BASE_URL}/api/menu')
       .then(res => res.json())
       .then(data => {
         setProductCatalogue(data);
@@ -129,7 +130,7 @@ export default function Menu() {
 
     // 🧺 Load every pantry table the popup needs (this was missing, so the popup lists were empty)
     const getTable = (table) =>
-      fetch(`http://localhost:5000/api/admin/${table}`)
+      fetch(`\${API_BASE_URL}/api/admin/${table}`)
         .then(res => res.json())
         .then(rows => (Array.isArray(rows) ? rows : []))
         .catch(() => []);

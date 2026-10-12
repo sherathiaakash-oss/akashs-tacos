@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../main.jsx';
 import React, { useState, useEffect } from 'react';
 import BuilderCard from '../components/BuilderCard';
 import { categoryImageUrl } from '../utils/categoryImages';
@@ -78,7 +79,7 @@ export default function Home() {
   }, [promotions.length]);
   // Fetch the dynamic aggregated collection feed natively from our server on mount
   useEffect(() => {
-    fetch('http://localhost:5000/api/menu')
+    fetch('\${API_BASE_URL}/api/menu')
       .then(res => res.json())
       .then(data => {
         setProductCatalogue(data);
